@@ -2,7 +2,10 @@ extends layout
 
 block content
   h1= title
-  p This will show a list of all the existing storages.
+  p This is all the existing storage:
+  ul 
+    each val in storageArray
+      li= val.storage_name 
 
   form(method="GET" action="/newStorage" ) 
     button(type="submit") Add new storage

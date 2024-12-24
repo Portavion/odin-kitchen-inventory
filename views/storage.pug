@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h1= title
+  p This will show a list of all the existing storages.
+
+  form(method="GET" action="/newStorage" ) 
+    button(type="submit") Add new storage

@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= title
+  if id
+    p Showing all the items inside the #{id}
+  if !id
+    p Error: No storage id selected
+    
+  form(method="GET" action="/items/addNewItem" ) 
+    button(type="submit") Add new item
+

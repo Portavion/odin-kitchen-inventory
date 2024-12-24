@@ -1,0 +1,9 @@
+
+extends layout
+
+block content
+  h1= title
+  form(method="POST" action="/newStorage" ) 
+   label(for="storageName" id="storageName") Storage Name:
+   input(type="text" name="storageName" id="storageName")
+   button(type="submit") Submit

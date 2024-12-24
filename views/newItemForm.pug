@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1= title
+  form(method="POST" action="/items/addNewItem" ) 
+   label(for="itemName" id="itemName") Item Name:
+   input(type="text" name="itemName" id="itemName")
+   label(for="quantity" id="quantity") Quantity:
+   input(type="number" id="quantity" name="quantity")
+   button(type="submit") Submit

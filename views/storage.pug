@@ -5,7 +5,8 @@ block content
   p This is all the existing storage:
   ul 
     each val in storageArray
-      li= val.storage_name 
+      li
+        a(href="/storage/"+ val.id)= val.storage_name
 
   form(method="GET" action="/newStorage" ) 
     button(type="submit") Add new storage

@@ -2,11 +2,16 @@ extends layout
 
 block content
   h1= title
-  if id
-    p Showing all the items inside the #{id}
-  if !id
-    p Error: No storage id selected
-    
-  form(method="GET" action="/items/addNewItem" ) 
+  if itemsInStorage.length > 0
+    p Showing all the items inside the #{itemsInStorage[0].storage_name}
+  if itemsInStorage.length === 0
+    p No Items in storage
+  ul
+    each val in itemsInStorage
+      li= val.item_name
+        
+  form(method="GET" action="/items/addNewItem/"+ id) 
     button(type="submit") Add new item
+  hr
+  a(href="/") Back to homepage
 

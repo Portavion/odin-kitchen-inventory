@@ -6,7 +6,10 @@ const storageRouter = Router();
 storageRouter.get("/", storageController.storageGet);
 
 storageRouter.get("/storage", storageController.storageContentGet);
-storageRouter.get("/storage/:id", storageController.storageContentGet);
+storageRouter.get(
+  "/storage/:filterByStorageId",
+  storageController.storageContentGet,
+);
 
 storageRouter.get("/newStorage", storageController.newStorageFormGet);
 storageRouter.post("/newStorage", storageController.newStorageFormPost);

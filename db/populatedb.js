@@ -5,32 +5,32 @@ const { Client } = require("pg");
 const itemSQL = `
 CREATE TABLE IF NOT EXISTS item (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  item_name VARCHAR ( 255 ),
+  item_name VARCHAR ( 255 )
 );
 
 INSERT INTO item (item_name) 
 VALUES
   ('Beurre'),
-  ('Pitch);
+  ('Pitch');
 `;
 
 const storageSQL = `
-CREATE TABLE IF NOT EXISTS storage_name (
+CREATE TABLE IF NOT EXISTS storage (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  storage_name VARCHAR ( 255 ),
+  storage_name VARCHAR ( 255 )
 );
 
 INSERT INTO storage (storage_name) 
 VALUES
   ('Fridge'),
-  ('Left Cupboard);
+  ('Left Cupboard');
 `;
 
 const storageItemsSQL = `
 CREATE TABLE IF NOT EXISTS storage_items (
   storage_id INTEGER REFERENCES storage(id), item_id INTEGER REFERENCES item(id),
   quantity_total INTEGER CHECK(quantity_total>=0), quantity_left INTEGER CHECK (quantity_left>=0),
-PRIMARY KEY (storage_id,item_id);
+PRIMARY KEY (storage_id,item_id)
 );
 
 INSERT INTO storage_items (storage_id, item_id, quantity_left,quantity_total) 
@@ -43,7 +43,7 @@ async function main() {
   console.log("seeding...");
   const client = new Client({
     // connectionString: `postgresql://${process.env.USER}:${process.env.PGPASSWORD}@localhost:5432/top_messages`,
-    connectionString: `postgresql://postgres:${process.env.PGPASSWORD}@junction.proxy.rlwy.net:38370/railway
+    connectionString: `postgresql://postgres:${process.env.PGPASSWORD}@roundhouse.proxy.rlwy.net:41853/railway
 `,
   });
   await client.connect();

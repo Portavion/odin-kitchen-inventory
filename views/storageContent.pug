@@ -8,7 +8,13 @@ block content
     p No Items in storage
   ul
     each val in itemsInStorage
-      li= val.item_name
+      li 
+        p(style="display: inline-block;") #{val.item_name} - quantity:#{val.quantity_left}
+        form(method="POST" action="/items/updateQuantityPost/"+ val.item_id style="display:inline-block;") 
+          input(type="number" name="newQuantity" id="newQuantity" style="margin-left: 10px; width:50px;") 
+          button(type="submit" style="display: inline-block; margin-left: 3px;") Edit Quantity
+        form(method="GET" action="/items/deleteItem/"+ val.item_id style="display:inline-block;") 
+          button(type="submit" style="display: inline-block; margin-left: 3px;") Delete
         
   form(method="GET" action="/items/addNewItem/"+ id) 
     button(type="submit") Add new item
